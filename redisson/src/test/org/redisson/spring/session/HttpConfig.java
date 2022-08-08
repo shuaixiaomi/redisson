@@ -3,7 +3,6 @@ package org.redisson.spring.session;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.spring.session.config.EnableRedissonHttpSession;
-import org.redisson.spring.session.config.EnableRedissonWebSession;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.DispatcherHandler;

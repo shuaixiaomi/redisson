@@ -13,7 +13,6 @@ import org.redisson.config.Config;
 import org.redisson.config.SubscriptionMode;
 import org.redisson.connection.MasterSlaveConnectionManager;
 import org.redisson.connection.balancer.RandomLoadBalancer;
-import org.springframework.dao.InvalidDataAccessResourceUsageException;
 import org.springframework.data.redis.connection.ClusterInfo;
 import org.springframework.data.redis.connection.RedisClusterNode;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -27,7 +26,6 @@ import java.util.Map;
 import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.redisson.connection.MasterSlaveConnectionManager.MAX_SLOT;
 
 public class RedissonClusterConnectionTest {
 

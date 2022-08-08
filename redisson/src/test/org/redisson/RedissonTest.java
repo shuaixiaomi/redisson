@@ -956,7 +956,7 @@ public class RedissonTest extends BaseTest {
     
     @Test
     public void testSingleConfigYAML() throws IOException {
-        RedissonClient r = BaseTest.createInstance();
+        RedissonClient r = createInstance();
         String t = r.getConfig().toYAML();
         Config c = Config.fromYAML(t);
         assertThat(c.toYAML()).isEqualTo(t);

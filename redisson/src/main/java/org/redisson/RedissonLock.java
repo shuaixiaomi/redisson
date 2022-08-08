@@ -94,7 +94,7 @@ public class RedissonLock extends RedissonBaseLock {
     private void lock(long leaseTime, TimeUnit unit, boolean interruptibly) throws InterruptedException {
         long threadId = Thread.currentThread().getId();
         Long ttl = tryAcquire(-1, leaseTime, unit, threadId);
-        // lock acquired
+//         lock acquired
         if (ttl == null) {
             return;
         }
@@ -181,6 +181,7 @@ public class RedissonLock extends RedissonBaseLock {
                 if (leaseTime > 0) {
                     internalLockLeaseTime = unit.toMillis(leaseTime);
                 } else {
+                    // 看门狗
                     scheduleExpirationRenewal(threadId);
                 }
             }
@@ -194,6 +195,19 @@ public class RedissonLock extends RedissonBaseLock {
         return get(tryLockAsync());
     }
 
+    /**
+     * if (redis.call('exists', KEYS[1]) == 0) then // 锁是否存在 kEYS[1]: RawName
+     *   redis.call('hincrby', KEYS[1], ARGV[2], 1); // Hincrby 命令用于为哈希表中的字段值加上指定增量值
+     *   redis.call('pexpire', KEYS[1], ARGV[1]); // PEXPIRE 命令 以毫秒为单位设置 key 的生存时间 EXPIRE 以秒为单位
+     *   return nil;
+     * end;
+     * if (redis.call('hexists', KEYS[1], ARGV[2]) == 1) then  // 当前线程是否持有锁 ARGV[2]: threadId
+     *   redis.call('hincrby', KEYS[1], ARGV[2], 1);
+     *   redis.call('pexpire', KEYS[1], ARGV[1]);
+     *   return nil;
+     * end;
+     * return redis.call('pttl', KEYS[1]); // Pttl 命令以毫秒为单位返回 key 的剩余过期时间。
+     */
     <T> RFuture<T> tryLockInnerAsync(long waitTime, long leaseTime, TimeUnit unit, long threadId, RedisStrictCommand<T> command) {
         return evalWriteAsync(getRawName(), LongCodec.INSTANCE, command,
                 "if (redis.call('exists', KEYS[1]) == 0) then " +

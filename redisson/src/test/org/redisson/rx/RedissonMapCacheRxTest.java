@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.redisson.api.RMapCacheRx;
-import org.redisson.api.RMapReactive;
 import org.redisson.api.RMapRx;
 import org.redisson.codec.MsgPackJacksonCodec;
 

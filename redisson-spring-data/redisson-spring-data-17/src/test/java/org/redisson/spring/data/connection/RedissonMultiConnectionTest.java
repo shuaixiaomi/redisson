@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 
 import org.junit.Test;
-import org.redisson.BaseTest;
 
 public class RedissonMultiConnectionTest extends BaseConnectionTest {
 

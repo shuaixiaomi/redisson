@@ -2,15 +2,10 @@ package org.redisson.spring.transaction;
 
 import org.redisson.BaseTest;
 import org.redisson.Redisson;
-import org.redisson.RedissonReactive;
-import org.redisson.api.RedissonClient;
 import org.redisson.api.RedissonReactiveClient;
-import org.redisson.transaction.operation.TransactionalOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.ReactiveTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.reactive.TransactionalOperator;
 
 import javax.annotation.PreDestroy;
 

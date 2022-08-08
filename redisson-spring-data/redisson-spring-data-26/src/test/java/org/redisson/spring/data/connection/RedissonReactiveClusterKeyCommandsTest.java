@@ -15,7 +15,6 @@ import org.redisson.client.protocol.RedisCommands;
 import org.redisson.config.Config;
 import org.redisson.config.SubscriptionMode;
 import org.redisson.connection.balancer.RandomLoadBalancer;
-import org.redisson.reactive.CommandReactiveService;
 import org.springframework.data.redis.RedisSystemException;
 
 

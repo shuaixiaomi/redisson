@@ -23,7 +23,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
-import static org.redisson.RedisRunner.KEYSPACE_EVENTS_OPTIONS.l;
 
 public class RedissonBlockingQueueTest extends RedissonQueueTest {
 

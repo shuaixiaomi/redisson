@@ -12,7 +12,6 @@ import org.redisson.connection.balancer.RandomLoadBalancer;
 import org.redisson.misc.RedisURI;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
